@@ -54,14 +54,20 @@ $(document).ready(function() {
         "ajax": 'assets/ajax.txt'
     } );
 
-    //this.getElementsByTagName('td')[0].textContent
-    $('#example tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
+    var table = $('#example').DataTable({
+        "ajax": 'assets/ajax.txt',
+        data: data,
+        columnDefs: [
+            {
+                targets:0,
+                render: function ( data, type, row, meta ) {
+                    if(type === 'display'){
+                        data = '<a href="basic.php?game=' + encodeURIComponent(data) + '">' + data + '</a>';
+                    }
+
+                    return data;
+                }
+            }
+        ]      
+    });
 });
