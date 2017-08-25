@@ -1,3 +1,4 @@
+var editor; 
 $(document).ready(function() {
     
     //ajax mocks
@@ -44,17 +45,19 @@ $(document).ready(function() {
         }        
     });
     
-   
+    
+    
     // Datatables
 
     var table = $('#example').DataTable({
-        "ajax": 'assets/ajax.txt',
+        "lengthChange": false,
+        "ajax": 'assets/itens.txt',
         columnDefs: [
             {
-                targets:0,
+                targets:4,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        data = '<a href="pedidos_itens.html?pedido=' + encodeURIComponent(data) + '">' + data + '</a>';
+                        data = '<input type="text" style="inline-size: 50px;" value="'+ encodeURIComponent(data) +'">';
                     }
 
                     return data;
@@ -62,4 +65,5 @@ $(document).ready(function() {
             }
         ]      
     });
+
 });
