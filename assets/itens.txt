@@ -2,48 +2,33 @@
   "data": [
     [
       "0010",
-      "KTQQ1BSI2",
-      "Camisa Manga Curta Slim",
-      "1200",
-      "0",
-      "10,99",
-      "Confirmado"
+      "10019207179 - Pack - VESTIDO JVM XADREZ",
+      "1011675 - Cabide A43",
+      "5.850,00",
+      "PEÇA",
+      "10.000,00",
+      "",
+      "Pendente"
     ],
     [
       "0020",
-      "KTQQ1BSI3",
-      "Camisa Manga Longa",
-      "800",
-      "0",
-      "12,99",
-      "Aguardando"
+      "10019207179  Pack - VESTIDO JVM XADREZ",
+      "1011694 - Etiqueta Microgate ST1",
+      "5.850,00",
+      "PEÇA",
+      " ",
+      "",
+      "Pendente"
     ],
     [
       "0030",
-      "KTQQ1BSI4",
-      "Calsa Slim Fit",
-      "1000",
-      "0",
-      "20,99",
-      "Confirmado"
-    ],
-    [
-      "0040",
-      "KTQQ1BSI5",
-      "Calsa",
-      "2200",
-      "0",
-      "30,99",
-      "Aguardando"
-    ],
-    [
-      "0050",
-      "KTQQ1BSI6",
-      "Jaqueta Jeans Feminia",
-      "2200",
-      "0",
-      "22,99",
-      "Aguardando"
-    ]    
+      "10019207179  Pack - VESTIDO JVM XADREZ",
+      "1011840 - Pino Ranhurado ST1",
+      "5.850,00",
+      "PEÇA",
+      " ",
+      "",
+      "Pendente"
+    ]
   ]
 }

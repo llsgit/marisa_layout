@@ -54,10 +54,10 @@ $(document).ready(function() {
         "ajax": 'assets/itens.txt',
         columnDefs: [
             {
-                targets:4,
+                targets:6,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        data = '<input type="text" style="inline-size: 50px;" value="'+ encodeURIComponent(data) +'">';
+                        data = '<input type="text" style="inline-size: 80px;" value="'+ encodeURIComponent(data) +'">';
                     }
 
                     return data;
