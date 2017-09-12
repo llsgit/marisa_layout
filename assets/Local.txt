@@ -1,0 +1,10 @@
+{
+  "data": [
+    [ "1", "Técnica de Medição 1","<i class='fa fa-trash'></i>"],
+    [ "2", "Técnica de Medição 2","<i class='fa fa-trash'></i>"],
+    [ "3", "Técnica de Medição 3","<i class='fa fa-trash'></i>"],
+    [ "4", "Técnica de Medição 4","<i class='fa fa-trash'></i>"],
+    [ "5", "Técnica de Medição 5","<i class='fa fa-trash'></i>"],
+    [ "6", "Técnica de Medição 6","<i class='fa fa-trash'></i>"]
+]
+}
