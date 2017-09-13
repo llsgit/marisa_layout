@@ -20,10 +20,63 @@ $(document).ready(function() {
 	}).on('click', '.btn-submit', function(e)
     {
          var controlForm = $('.controls form:first');
-         alert(controlForm[0].value);
+         var campos = controlForm.find('input');
+         var pedido = "";
+         for (var i = 0; i < campos.length; i++) {
+            if (i>0) {
+                pedido=pedido+';';
+            }
+            pedido = pedido + campos[i].value;
+         }
+         document.form1.pedido.value = pedido;
     });;
 
-
+    var $validator = $("#form1").validate({
+        rules: {
+            status: {
+                required: function(element) {
+                  return eval(document.form1.pedido.value=="");
+                }
+            },
+            dt_remessa_ini: {
+                required: function(element) {
+                  return eval(document.form1.pedido.value=="");
+                }
+            },
+            dt_remessa_fim: {
+                required: function(element) {
+                  return eval(document.form1.pedido.value=="");
+                }
+            },
+            dt_coleta_ini: {
+                required: function(element) {
+                  return eval(document.form1.pedido.value=="");
+                }
+            },
+            dt_coleta_fim: {
+                required: function(element) {
+                  return eval(document.form1.pedido.value=="");
+                }
+            }                                                
+        },
+          messages: {
+            status: {
+              required: "Selecionar o Status do Pedido"
+            },
+            dt_remessa_ini: {
+              required: "Informar a Data inicial"
+            },
+            dt_remessa_fim: {
+              required: "Informar a Data final"
+            },     
+            dt_coleta_ini: {
+              required: "Informar a Data inicial"
+            },
+            dt_coleta_fim: {
+              required: "Informar a Data final"
+            }                        
+          }
+    });
     $('.date-picker').datepicker({
         orientation: "top auto",
         autoclose: true

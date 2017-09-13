@@ -1,65 +1,59 @@
 $(document).ready(function() {
-    
-    //ajax mocks
-    $.mockjaxSettings.responseTime = 500; 
-    
-    $.mockjax({
-        url: '/post',
-        response: function(settings) {
-            log(settings, this);
-        }
-    });
-
-    $.mockjax({
-        url: '/error',
-        status: 400,
-        statusText: 'Bad Request',
-        response: function(settings) {
-            this.responseText = 'Please input correct value'; 
-            log(settings, this);
-        }        
-    });
-    
-    $.mockjax({
-        url: '/status',
-        status: 500,
-        response: function(settings) {
-            this.responseText = 'Internal Server Error';
-            log(settings, this);
-        }        
-    });
-  
-    $.mockjax({
-        url: '/groups',
-        response: function(settings) {
-            this.responseText = [ 
-             {value: 0, text: 'Guest'},
-             {value: 1, text: 'Service'},
-             {value: 2, text: 'Customer'},
-             {value: 3, text: 'Operator'},
-             {value: 4, text: 'Support'},
-             {value: 5, text: 'Admin'}
-           ];
-           log(settings, this);
-        }        
-    });
-    
-   
+       
     // Datatables
 
     var table = $('#example').DataTable({
         "ajax": 'assets/ajax.txt',
-        columnDefs: [
+        "columns": [
             {
-                targets:0,
-                render: function ( data, type, row, meta ) {
-                    if(type === 'display'){
-                        data = '<a href="pedidos_itens.html?pedido=' + encodeURIComponent(data) + '">' + data + '</a>';
-                    }
-
-                    return data;
-                }
-            }
-        ]      
+                "class":          "details-control",
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ""
+            },
+            { "data": 0 },
+            { "data": 1 },
+            { "data": 2 },
+            { "data": 3 },
+            { "data": 4 },
+            { "data": 5 }                        
+        ]    
     });
+
+    var detailRows = [];
+    // Add event listener for opening and closing details
+    $('#example tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+ 
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+
 });
+
+function format ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+            '<td>Full name:</td>'+
+            '<td>'+d.name+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Extension number:</td>'+
+            '<td>'+d.extn+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Extra info:</td>'+
+            '<td>And any further details here (images etc)...</td>'+
+        '</tr>'+
+    '</table>';
+}
