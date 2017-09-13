@@ -3,8 +3,12 @@ $(document).ready(function() {
     // Datatables
 
     var table = $('#example').DataTable({
+        "bPaginate": false,
         "ajax": 'assets/ajax.txt',
         "columns": [
+            {   "orderable":      false,
+                "defaultContent": ""
+            },
             {
                 "class":          "details-control",
                 "orderable":      false,
@@ -17,7 +21,20 @@ $(document).ready(function() {
             { "data": 3 },
             { "data": 4 },
             { "data": 5 }                        
-        ]    
+        ],
+        columnDefs: [
+            {
+                targets:0,
+                render: function ( data, type, row, meta ) {
+                    if(type === 'display'){
+                        data = '<input type="checkbox">';
+                    }
+
+                    return data;
+                }
+            }
+        ],
+        "order": [[2, 'asc']]        
     });
 
     var detailRows = [];
@@ -25,7 +42,6 @@ $(document).ready(function() {
     $('#example tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
- 
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
