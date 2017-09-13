@@ -45,12 +45,12 @@ $(document).ready(function() {
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
-            tr.removeClass('shown');
+            tr.removeClass('details');
         }
         else {
             // Open this row
             row.child( format(row.data()) ).show();
-            tr.addClass('shown');
+            tr.addClass('details');
         }
     } );
 
