@@ -72,14 +72,14 @@ $(document).ready(function() {
 });
 
 function format ( d ) {
-    var table = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:100px;">'+
-                 '<thead><tr><th>Item</th><th>Material-lote</th><th>Material MAV</th><th>Quantidade Pedido</th><th>Unidade</th><th>Quantidade Fornecedor</th><th>Status</th></tr></thead>';
-    if (d.length == null) {
-        table = table + '<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+    var table = '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%;padding-left:100px;">'+
+                 '<thead><tr><th>#</th><th>Item</th><th>Material-lote</th><th>Material MAV</th><th>Quantidade Pedido</th><th>Unidade</th><th>Quantidade Fornecedor</th><th>Status</th></tr></thead>';
+    if (d.Itens.length == null) {
+        table = table + '<tr><td><input type="checkbox"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Quantidade_Fornecedor+'</td><td>'+d.Itens.Status_Item+'</td></tr>';
     }
     else{
-        for (var i = 0; i < d.length; i++) {
-            table = table + '<tr><td>'+d[i].Item+'</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+        for (var i = 0; i < d.Itens.length; i++) {
+            table = table + '<tr><td><input type="checkbox"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Quantidade_Fornecedor+'</td><td>'+d.Itens[i].Status_Item+'</td></tr>';
         }
 
     }
