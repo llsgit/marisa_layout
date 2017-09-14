@@ -37,7 +37,12 @@ $(document).ready(function() {
                 targets:7,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        data = '<input type="checkbox">';
+                        if (data.length == 'undefined') {
+                            data = '0';
+                        }
+                        else{
+                            data = row.Itens.length;
+                        }
                     }
 
                     return data;
