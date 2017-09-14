@@ -15,12 +15,12 @@ $(document).ready(function() {
                 "data":           null,
                 "defaultContent": ""
             },
-            { "data": 0 },
-            { "data": 1 },
-            { "data": 2 },
-            { "data": 3 },
-            { "data": 4 },
-            { "data": 5 }                        
+            { "data": "Pedido" },
+            { "data": "Fornecedor" },
+            { "data": "Status" },
+            { "data": "Dt_remessa" },
+            { "data": "Dt_retirada" },
+            { "data": "Itens" }                        
         ],
         columnDefs: [
             {
@@ -32,7 +32,17 @@ $(document).ready(function() {
 
                     return data;
                 }
-            }
+            },
+            {
+                targets:7,
+                render: function ( data, type, row, meta ) {
+                    if(type === 'display'){
+                        data = '<input type="checkbox">';
+                    }
+
+                    return data;
+                }
+            }            
         ],
         "order": [[2, 'asc']]        
     });
