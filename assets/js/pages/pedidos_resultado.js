@@ -27,7 +27,7 @@ $(document).ready(function() {
                 targets:0,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        data = '<input type="checkbox">';
+                        data = '<input type="checkbox" class="checkbox1">';
                     }
 
                     return data;
@@ -67,7 +67,14 @@ $(document).ready(function() {
             row.child( format(row.data()) ).show();
             tr.addClass('details');
         }
+    } ).on('change','input:checkbox', function () {
+        alert('ok');
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        var xx = row.data();
+        if (true) {}
     } );
+
 
 });
 
