@@ -5,7 +5,7 @@
       "Status": "Liberado",
       "Dt_remessa": "17.01.2017",
       "Dt_retirada": "",
-      "Itens": {
+      "Itens": [{
         "Item": "0010",
         "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
         "Material_Mav": "1011675 - Cabide A43",
@@ -14,7 +14,27 @@
         "Quantidade_Fornecedor": "10.000,00",
         "Sobra": "",
         "Status_Item": "Pendente"
-      }
+      },
+      {
+        "Item": "0020",
+        "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
+        "Material_Mav": "1011675 - Cabide A43",
+        "Quantidade": "5.850,00",
+        "Unidade": "PEÇA",
+        "Quantidade_Fornecedor": "10.000,00",
+        "Sobra": "",
+        "Status_Item": "Pendente"
+      },
+      {
+        "Item": "0030",
+        "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
+        "Material_Mav": "1011675 - Cabide A43",
+        "Quantidade": "5.850,00",
+        "Unidade": "PEÇA",
+        "Quantidade_Fornecedor": "10.000,00",
+        "Sobra": "",
+        "Status_Item": "Pendente"
+      }]
     },
     {
       "Pedido": "6500168149",
