@@ -37,11 +37,11 @@ $(document).ready(function() {
                 targets:7,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        if (data.length == 'undefined') {
-                            data = '0';
+                        if (data.length == null) {
+                            data = '1';
                         }
                         else{
-                            data = row.Itens.length;
+                            data = data.length;
                         }
                     }
 
@@ -72,19 +72,17 @@ $(document).ready(function() {
 });
 
 function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
+    var table = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:100px;">'+
+                 '<thead><tr><th>Item</th><th>Material-lote</th><th>Material MAV</th><th>Quantidade Pedido</th><th>Unidade</th><th>Quantidade Fornecedor</th><th>Status</th></tr></thead>';
+    if (d.length == null) {
+        table = table + '<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+    }
+    else{
+        for (var i = 0; i < d.length; i++) {
+            table = table + '<tr><td>'+d[i].Item+'</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+        }
+
+    }
+    table = table + '</table>';
+    return table;
 }
