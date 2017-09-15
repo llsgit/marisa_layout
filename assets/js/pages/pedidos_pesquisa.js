@@ -33,11 +33,6 @@ $(document).ready(function() {
 
     var $validator = $("#form1").validate({
         rules: {
-            status: {
-                required: function(element) {
-                  return eval(document.form1.pedido.value=="");
-                }
-            },
             dt_remessa_ini: {
                 required: function(element) {
                   return eval(document.form1.pedido.value=="");
@@ -60,9 +55,6 @@ $(document).ready(function() {
             }                                                
         },
           messages: {
-            status: {
-              required: "Selecionar o Status do Pedido"
-            },
             dt_remessa_ini: {
               required: "Informar a Data inicial"
             },
