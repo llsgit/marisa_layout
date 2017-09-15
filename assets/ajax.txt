@@ -5,6 +5,7 @@
       "Status": "Liberado",
       "Dt_remessa": "17.01.2017",
       "Dt_retirada": "",
+      "Pedido_Checked": "Checked",
       "Itens": [{
         "Item": "0010",
         "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
@@ -13,7 +14,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "10.000,00",
         "Sobra": "",
-        "Status_Item": "Pendente"
+        "Status_Item": "Pendente",
+        "Item_Checked": ""
       },
       {
         "Item": "0020",
@@ -23,7 +25,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "9.240,00",
         "Sobra": "",
-        "Status_Item": "Pendente"
+        "Status_Item": "Pendente",
+        "Item_Checked": "Checked"
       },
       {
         "Item": "0030",
@@ -33,7 +36,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "2.000,00",
         "Sobra": "",
-        "Status_Item": "Concluído"
+        "Status_Item": "Concluído",
+        "Item_Checked": ""
       }]
     },
     {
@@ -42,6 +46,7 @@
       "Status": "Aguardando",
       "Dt_remessa": "17.11.2017",
       "Dt_retirada": "15.12.2017",
+      "Pedido_Checked": "",
       "Itens": {
         "Item": "0010",
         "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
@@ -50,7 +55,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "10.000,00",
         "Sobra": "",
-        "Status_Item": "Pendente"
+        "Status_Item": "Pendente",
+        "Item_Checked": ""
       }
     },
     {
@@ -59,6 +65,7 @@
       "Status": "Conf. Parcial",
       "Dt_remessa": "15.10.2017",
       "Dt_retirada": "25.09.2017",
+      "Pedido_Checked": "Checked",
       "Itens": {
         "Item": "0010",
         "Material_Lote": "10019207179 - Pack - VESTIDO JVM XADREZ",
@@ -67,7 +74,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "10.000,00",
         "Sobra": "",
-        "Status_Item": "Pendente"
+        "Status_Item": "Pendente",
+        "Item_Checked": ""
       }
     },
     {
@@ -76,6 +84,7 @@
       "Status": "Confirmado",
       "Dt_remessa": "01.10.2017",
       "Dt_retirada": "01.10.2017",
+      "Pedido_Checked": "",
       "Itens": {
         "Item": "0010",
         "Material_Lote": "10019207179  Pack - VESTIDO JVM XADREZ",
@@ -84,7 +93,8 @@
         "Unidade": "PEÇA",
         "Quantidade_Fornecedor": "10.000,00",
         "Sobra": "",
-        "Status_Item": "Pendente"
+        "Status_Item": "Pendente",
+        "Item_Checked": "Checked"
       }
     }
   ]
