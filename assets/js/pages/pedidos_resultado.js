@@ -94,7 +94,9 @@ $(document).ready(function() {
 
     $(document).on('click', '.btn-submit', function(e)
     {
-         alert('ok');
+         var x = table.length;
+
+         alert(x);
     });
 
 });
