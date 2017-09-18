@@ -154,15 +154,15 @@ $(document).ready(function() {
                     d.Pedido_Checked = 'checked';
                     if (flg) {
                         flg = false;
-                        materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': d.Itens.Quantidade, 'Unidade': d.Itens.Unidade });    
+                        materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
                     }
                     else{
                         for (i = 0; i < materiais.length; i++) {
-                            if (materiais[i].Material == d.Itens.Material_Mav) {
-                                materiais[i].Quantidade = materiais[i].Quantidade + d.Itens.Quantidade;
+                            if (materiais[i].Material == parseInt(d.Itens.Material_Mav)) {
+                                materiais[i].Quantidade = materiais[i].Quantidade + parseInt(d.Itens.Quantidade);
                             }
                             else{
-                                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': d.Itens.Quantidade, 'Unidade': d.Itens.Unidade });                               
+                                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                               
                             }    
                         }   
                     }                             
@@ -175,15 +175,15 @@ $(document).ready(function() {
                         d.Pedido_Checked = 'checked';
                         if (flg) {
                             flg = false;
-                            materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': d.Itens[i].Quantidade, 'Unidade': d.Itens[i].Unidade });   
+                            materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
                         }
                         else{
                             for (j = 0; j < materiais.length; j++) {
-                                if (materiais[j].Material == d.Itens[i].Material_Mav) {
-                                    materiais[j].Quantidade = materiais[j].Quantidade + d.Itens[j].Quantidade;
+                                if (materiais[j].Material == parseInt(d.Itens[i].Material_Mav)) {
+                                    materiais[j].Quantidade = materiais[j].Quantidade + d.Itens[i].Quantidade;
                                 }
                                 else{
-                                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': d.Itens[i].Quantidade, 'Unidade': d.Itens[i].Unidade });                               
+                                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
                                 }    
                             }                             
                         }
