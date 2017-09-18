@@ -21,7 +21,7 @@
         <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
         <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>        
         <!-- Theme Styles -->
         <link href="assets/css/modern.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -57,10 +57,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-white">
-                                <div class="panel-heading clearfix">
+                                <div class="panel-heading clearfix tabela">
                                     <h4 class="panel-title">Lista de Pedidos</h4>
                                 </div>
-                                <div class="panel-body">
+                                <div class="panel-body tabela">
                                    <div class="table-responsive">
                                     <table id="example" class="display select" style="width: 100%; cellspacing: 0;">
                                         <thead>
@@ -83,6 +83,49 @@
                                         <input type="hidden" name="material">
                                     <button type="button" class="btn btn-primary btn-submit">Confirmar</button>
                                     </form>
+                                </div>
+                                <div class="panel-heading clearfix formulario">
+                                    <h4 class="panel-title" id='titulo_pedido'></h4>
+                                </div>                                
+                                <div class="panel-heading clearfix formulario">
+                                    <h3 class="panel-title">Resumo de Itens:</h4>
+                                </div>                                
+                                <div class="panel-body formulario">
+                                    <form class="form-horizontal" action="pedidos_resultado.html">
+                                        <table id="materiais" class="display select" style="width: 100%; cellspacing: 10;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Material MAV</th>
+                                                    <th>Quantidade Total nos Pedidos</th>
+                                                    <th>Unidade de Medida</th>
+                                                    <th>Sobra</th>
+                                                </tr>
+                                            </thead>
+                                        </table>        
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Data de Coleta</label>
+                                            <div class="col-sm-2">
+                                                <select class="select-data-remessa js-states form-control" tabindex="-1" style="display: none; width: 100%"></select>
+                                            </div>                                                                   
+                                        </div>                                                                                
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Endereço de Coleta</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="centro" class="form-control" value="CD820">
+                                            </div>                                                 
+                                            <div class="col-sm-4">
+                                                <input type="text" id="entrega1" class="form-control" value="Rua das Escotilhas, 320 - São Paulo - SP">
+                                            </div>                                          
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Informações Adicionais</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="entrega1" class="form-control" value="">
+                                            </div>                                          
+                                        </div>                                        
+                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                    </form>                                          
                                 </div>
                             </div>                            
                         </div>
@@ -108,6 +151,7 @@
         <script src="assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
         <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
         <script src="assets/js/modern.min.js"></script>
+        <script src="assets/plugins/select2/js/select2.min.js"></script>   
         <script src="assets/js/pages/pedidos_resultado.js"></script>
         
     </body>

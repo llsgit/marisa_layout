@@ -1,6 +1,30 @@
+var detailRows = [];
 $(document).ready(function() {
-       
+    $(".formulario").hide();
+    $(".tabela").show();
     // Datatables
+    var data = [{ id: 0, text: '22/09/2017' }, { id: 1, text: '23/09/2017' }, { id: 2, text: '24/09/2017' }, { id: 3, text: '25/09/2017' }, { id: 4, text: '28/09/2017' }];
+ 
+    $(".select-data-remessa").select2({
+        data: data
+    });    
+
+    var table_meteriais = $('#materiais').DataTable({
+        "bPaginate": false,
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        "searching":   false,
+        "columnDefs": [
+            {
+                "render": function ( data, type, row ) {
+                    return "<input type='text' size='8'>";
+                },
+                "targets": 3
+            }
+        ]   
+    });
+
 
     var table = $('#example').DataTable({
         "bPaginate": false,
@@ -51,8 +75,7 @@ $(document).ready(function() {
         ],
         "order": [[2, 'asc']]        
     });
-
-    var detailRows = [];
+    
     // Add event listener for opening and closing details
     $('#example tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
@@ -72,6 +95,7 @@ $(document).ready(function() {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
         var d = row.data();
+        var id = this.id;
         if (this.checked) {
             status = 'checked';
         }
@@ -82,11 +106,18 @@ $(document).ready(function() {
             table.$('tr').each(function(){
                 var row_1 = table.row( this );
                 var d_1 = row_1.data();
-                for (var i = 0; i < d_1.Itens.length; i++) {
-                    var item = d.Pedido+'_'+d_1.Itens[i].Item;
-                    if (item == this.id) {
-                        alert(d_1.Itens[i].Item);
-                        d_1.Itens[i].Item_Checked = status;
+                if (d_1.Itens.length == null) {
+                    var item = d_1.Pedido+'_'+d_1.Itens.Item;
+                    if (item == id) {
+                        d_1.Itens.Item_Checked = status;
+                    }                                    
+                }
+                else{
+                    for (var i = 0; i < d_1.Itens.length; i++) {
+                        var item = d_1.Pedido+'_'+d_1.Itens[i].Item;
+                        if (item == id) {
+                            d_1.Itens[i].Item_Checked = status;
+                        }
                     }
                 }
             });
@@ -112,33 +143,79 @@ $(document).ready(function() {
         var form = $(this).parents('form:first');
         var pedidos = '';
         var item = '';
+        var materiais = [];
+        var flg = true;
         table.$('tr').each(function(){
             var row = table.row( this );
             var d = row.data();
+            if (d.Itens.length == null) {
+                if (d.Itens.Item_Checked == 'checked') {
+                    item = item + d.Pedido +'_'+d.Itens.Item;    
+                    d.Pedido_Checked = 'checked';
+                    if (flg) {
+                        flg = false;
+                        materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': d.Itens.Quantidade, 'Unidade': d.Itens.Unidade });    
+                    }
+                    else{
+                        for (i = 0; i < materiais.length; i++) {
+                            if (materiais[i].Material == d.Itens.Material_Mav) {
+                                materiais[i].Quantidade = materiais[i].Quantidade + d.Itens.Quantidade;
+                            }
+                            else{
+                                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': d.Itens.Quantidade, 'Unidade': d.Itens.Unidade });                               
+                            }    
+                        }   
+                    }                             
+                }            
+            }
+            else{
+                for (var i = 0; i < d.Itens.length; i++) {
+                    if(d.Itens[i].Item_Checked == 'checked'){
+                        item = item + d.Pedido +'_'+d.Itens[i].Item;   
+                        d.Pedido_Checked = 'checked';
+                        if (flg) {
+                            flg = false;
+                            materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': d.Itens[i].Quantidade, 'Unidade': d.Itens[i].Unidade });   
+                        }
+                        else{
+                            for (j = 0; j < materiais.length; j++) {
+                                if (materiais[j].Material == d.Itens[i].Material_Mav) {
+                                    materiais[j].Quantidade = materiais[j].Quantidade + d.Itens[j].Quantidade;
+                                }
+                                else{
+                                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': d.Itens[i].Quantidade, 'Unidade': d.Itens[i].Unidade });                               
+                                }    
+                            }                             
+                        }
+                    }
+                }
+            }
             if (d.Pedido_Checked == 'checked') {
                 if (pedidos!='') {
                     pedidos = pedidos + ',';
                 }
                 pedidos = pedidos + d.Pedido;
-            }
-            for (var i = 0; i < d.Itens.length; i++) {
-                item = d.Pedido+'_'+d.Itens[i].Item;
-                var checkbox = document.getElementById(item);
-                alert(item +': '+checkbox.checked);
-                alert(item +': '+d.Itens[i].Item_Checked);
-
-                if(d.Itens[i].Item_Checked == 'checked'){
-                    //alert(d.Itens[i].Item);
-                }
-            }
-
+            }            
         });
-        $(form).append(
+        alert(materiais.length);
+        for (i = 0; i < materiais.length; i++) {
+            table_meteriais.row.add( [
+                    materiais[i].Material,
+                    materiais[i].Quantidade,
+                    materiais[i].Unidade,
+                    ''
+                ] ).draw( false ); 
+        }
+        //$(".formulario").attr('style', 'display: block !important');
+        $(".formulario").show();
+        $(".tabela").hide();
+        $('#titulo_pedido').text("Confirmação - Pedidos: "+pedidos);        
+        /*$(form).append(
            $('<input>').attr('type', 'hidden')
               .attr('name', 'pedido')
               .val(pedidos)
         );        
-        form.submit();
+        //form.submit(); */
     });
 
 });
