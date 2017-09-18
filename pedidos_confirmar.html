@@ -58,54 +58,61 @@
                         <div class="col-md-12">
                             <div class="panel panel-white">
                                 <div class="panel-heading clearfix">
-                                    <h4 class="panel-title">Confirmação do Pedido 9843572814</h4>
+                                    <h4 class="panel-title" id='titulo_pedido'></h4>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" action="pedidos_resultado.html">
-                                        <div class="form-group">
-                                            <label for="input-Default" class="col-sm-2 control-label">Condições de Pagamento</label>
-                                            <div class="col-sm-3">
-                                                <select class="form-control m-b-sm">
-                                                    <option value=1>30 dias</option>
-                                                    <option value=2>60 dias</option> 
-                                                    <option value=3>90 dias</option>
-                                                </select>
-                                            </div>
-                                        </div>                                            
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Condições de Entrega (Frete FOB):</label>
-                                            <div class="col-sm-3">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="cbx_retirar" checked>Retirar pedido pessoalmente
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="cbx_transportadora">Utilizar Trasportadora
-                                                    </label>
-                                                </div>
-                                            </div>       
-                                            <label class="col-sm-2 control-label" id="transportadora_label">Transportadora</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" id="transportadora_input" class="form-control" >
-                                            </div>
-                                        </div>        
+                                        <div class="panel-heading clearfix">
+                                            <h4 class="panel-title">Resumo de Itens:</h4>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Material MAV</th>
+                                                    <th>Quantidade Total nos Pedidos</th>
+                                                    <th>Unidade de Medida</th>
+                                                    <th>Sobra</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1011675 - Cabide A43</th>
+                                                    <td>10.000</td>
+                                                    <td>Peça</td>
+                                                    <td><input type="text" size="10" name="input"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1011694 - Etiqueta Microgate ST1</th>
+                                                    <td>9.800</td>
+                                                    <td>Peça</td>
+                                                    <td><input type="text" size="10" name="input"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1011840 - Pino Ranhurado ST1</th>
+                                                    <td>13.780</td>
+                                                    <td>Peça</td>
+                                                    <td><input type="text" size="10" name="input"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>        
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Data de Coleta</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" id="entrega1" class="form-control date-picker">
-                                            </div>                                          
-                                        </div>                                          
+                                            <div class="col-sm-2">
+                                                <input type="text" name="dt_coleta" class="form-control date-picker">
+                                            </div>                                                                   
+                                        </div>                                                                                
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Endereço de Coleta</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="centro" class="form-control" value="CD820">
+                                            </div>                                                 
                                             <div class="col-sm-4">
                                                 <input type="text" id="entrega1" class="form-control" value="Rua das Escotilhas, 320 - São Paulo - SP">
                                             </div>                                          
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Informações Adicionais</label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <input type="text" id="entrega1" class="form-control" value="">
                                             </div>                                          
                                         </div>                                        

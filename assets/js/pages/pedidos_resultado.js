@@ -94,9 +94,23 @@ $(document).ready(function() {
 
     $(document).on('click', '.btn-submit', function(e)
     {
-         var x = table.length;
+        var form = $(this).parents('form:first');
+        var pedidos = '';
+        table.$('tr').each(function(){
+            var row = table.row( this );
+            var d = row.data();
+            if (pedidos!='') {
+                pedidos = pedidos + ',';
+            }
+            pedidos = pedidos + d.Pedido;
 
-         alert(x);
+        });
+        $(form).append(
+           $('<input>').attr('type', 'hidden')
+              .attr('name', 'pedido')
+              .val(pedidos)
+        );        
+        form.submit();
     });
 
 });
