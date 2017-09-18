@@ -78,31 +78,59 @@ $(document).ready(function() {
         else{
             status = '';   
         }
-        d.Pedido_Checked = status;
-        if (d.Itens.length == null) {
-            d.Itens.Item_Checked = status;
+        if (d === undefined) {
+            table.$('tr').each(function(){
+                var row_1 = table.row( this );
+                var d_1 = row_1.data();
+                for (var i = 0; i < d_1.Itens.length; i++) {
+                    var item = d.Pedido+'_'+d_1.Itens[i].Item;
+                    if (item == this.id) {
+                        alert(d_1.Itens[i].Item);
+                        d_1.Itens[i].Item_Checked = status;
+                    }
+                }
+            });
         }
         else{
-            for (var i = 0; i < d.Itens.length; i++) {
-               d.Itens[i].Item_Checked = status;
+            d.Pedido_Checked = status;
+            if (d.Itens.length == null) {
+                d.Itens.Item_Checked = status;
             }
+            else{
+                for (var i = 0; i < d.Itens.length; i++) {
+                   d.Itens[i].Item_Checked = status;
+                }
+            }
+            if ( row.child.isShown() ) {
+                row.child( format(row.data()) ).show();
+            }        
         }
-        if ( row.child.isShown() ) {
-            row.child( format(row.data()) ).show();
-        }        
     });
 
     $(document).on('click', '.btn-submit', function(e)
     {
         var form = $(this).parents('form:first');
         var pedidos = '';
+        var item = '';
         table.$('tr').each(function(){
             var row = table.row( this );
             var d = row.data();
-            if (pedidos!='') {
-                pedidos = pedidos + ',';
+            if (d.Pedido_Checked == 'checked') {
+                if (pedidos!='') {
+                    pedidos = pedidos + ',';
+                }
+                pedidos = pedidos + d.Pedido;
             }
-            pedidos = pedidos + d.Pedido;
+            for (var i = 0; i < d.Itens.length; i++) {
+                item = d.Pedido+'_'+d.Itens[i].Item;
+                var checkbox = document.getElementById(item);
+                alert(item +': '+checkbox.checked);
+                alert(item +': '+d.Itens[i].Item_Checked);
+
+                if(d.Itens[i].Item_Checked == 'checked'){
+                    //alert(d.Itens[i].Item);
+                }
+            }
 
         });
         $(form).append(
@@ -123,7 +151,7 @@ function format ( d ) {
     }
     else{
         for (var i = 0; i < d.Itens.length; i++) {
-            table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[0].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Quantidade_Fornecedor+'</td><td>'+d.Itens[i].Status_Item+'</td></tr>';
+            table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[i].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Quantidade_Fornecedor+'</td><td>'+d.Itens[i].Status_Item+'</td></tr>';
         }
 
     }
