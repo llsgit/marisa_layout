@@ -201,7 +201,6 @@ $(document).ready(function() {
                 pedidos = pedidos + d.Pedido;
             }            
         });
-        alert(materiais.length);
         for (i = 0; i < materiais.length; i++) {
             table_meteriais.row.add( [
                     materiais[i].Material,
