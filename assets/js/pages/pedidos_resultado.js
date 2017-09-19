@@ -144,7 +144,7 @@ $(document).ready(function() {
         var pedidos = '';
         var item = '';
         var materiais = [];
-        var flg = true;
+        var flg = true;        
         table.$('tr').each(function(){
             var row = table.row( this );
             var d = row.data();
@@ -157,14 +157,16 @@ $(document).ready(function() {
                         materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
                     }
                     else{
+                        var flg_material = true;
                         for (i = 0; i < materiais.length; i++) {
                             if (materiais[i].Material == d.Itens.Material_Mav) {
                                 materiais[i].Quantidade = materiais[i].Quantidade + parseInt(d.Itens.Quantidade);
-                            }
-                            else{
-                                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                               
-                            }    
+                                flg_material = false;
+                            } 
                         }   
+                        if (flg_material) {
+                            materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                                                              
+                        }
                     }                             
                 }            
             }
@@ -178,14 +180,16 @@ $(document).ready(function() {
                             materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
                         }
                         else{
+                            var flg_material = true;
                             for (j = 0; j < materiais.length; j++) {
                                 if (materiais[j].Material == d.Itens[i].Material_Mav) {
                                     materiais[j].Quantidade = materiais[j].Quantidade + parseInt(d.Itens[i].Quantidade);
-                                }
-                                else{
-                                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
-                                }    
-                            }                             
+                                    flg_material = false;
+                                }                                                                      
+                            }  
+                            if (flg_material) {
+                                materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
+                            }                           
                         }
                     }
                 }
