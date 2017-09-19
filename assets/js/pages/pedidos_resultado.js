@@ -158,7 +158,7 @@ $(document).ready(function() {
                     }
                     else{
                         for (i = 0; i < materiais.length; i++) {
-                            if (materiais[i].Material == parseInt(d.Itens.Material_Mav)) {
+                            if (materiais[i].Material == d.Itens.Material_Mav) {
                                 materiais[i].Quantidade = materiais[i].Quantidade + parseInt(d.Itens.Quantidade);
                             }
                             else{
@@ -179,8 +179,8 @@ $(document).ready(function() {
                         }
                         else{
                             for (j = 0; j < materiais.length; j++) {
-                                if (materiais[j].Material == parseInt(d.Itens[i].Material_Mav)) {
-                                    materiais[j].Quantidade = materiais[j].Quantidade + d.Itens[i].Quantidade;
+                                if (materiais[j].Material == d.Itens[i].Material_Mav) {
+                                    materiais[j].Quantidade = materiais[j].Quantidade + parseInt(d.Itens[i].Quantidade);
                                 }
                                 else{
                                     materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
