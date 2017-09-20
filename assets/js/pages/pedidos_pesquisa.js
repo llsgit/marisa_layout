@@ -32,6 +32,7 @@ $(document).ready(function() {
     });;
 
     var $validator = $("#form1").validate({
+      
         rules: {
             dt_remessa_ini: {
                 required: function(element) {
