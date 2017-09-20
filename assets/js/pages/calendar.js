@@ -1,115 +1,57 @@
 $(document).ready(function() {
     
-    var drag =  function() {
-        $('.calendar-event').each(function() {
-
-        // store data so the calendar knows to render an event upon drop
-        $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true // maintain when user navigates (see docs on the renderEvent method)
-        });
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-            zIndex: 1111999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-        });
-    });
-    };
-    
-    var removeEvent =  function() {
-        $('.remove-calendar-event').click(function() {
-        $(this).closest('.calendar-event').fadeOut();
-        return false;
-    });
-    };
-    
-    $(".add-event").keypress(function (e) {
-        if ((e.which == 13)&&(!$(this).val().length == 0)) {
-            $('<div class="calendar-event"><p>' + $(this).val() + '</p><a href="javascript:void(0);" class="remove-calendar-event"><i class="fa fa-remove"></i></a></div>').insertBefore(".add-event");
-            $(this).val('');
-        } else if(e.which == 13) {
-            alert('Please enter event name');
-        }
-        drag();
-        removeEvent();
-    });
-    
-    
-    drag();
-    removeEvent();
     
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
     var year = date.getFullYear();
     
-    $('#calendar').fullCalendar({
-       
+    $('#calendar').fullCalendar({       
 			header: {
-				left: 'prev,next today',
+				left: 'prev',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: 'next'
 			},
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-			eventLimit: true, // allow "more" link when too many events
+			lang: 'pt',
+
+			dayClick: function(date1, jsEvent, view) {
+		        var newEvent = new Object();
+		        newEvent.id= '999';
+		        newEvent.start= date1;
+				newEvent.color= 'green';
+				newEvent.textColor= 'black';
+				newEvent.allDay = true;
+				$('#calendar').fullCalendar('removeEvents','999');
+				$('#calendar').fullCalendar('renderEvent', newEvent, true);
+				$('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+date1.month()+"/"+date1.year());    
+		    },    
 			events: [
 				{
-					title: 'All Day Event',
-					start: new Date(year, month, day-8)
+					start: new Date(year, month, day-8),
+					color: 'yellow',
+					textColor: 'black',
+					allDay: true
 				},
 				{
-					title: 'Long Event',
-					start: new Date(year, month, day-5),
-					end: new Date(year, month, day-2)
-				},
+					start: new Date(year, month, day-7),
+					color: 'yellow',
+					textColor: 'black',
+					allDay: true
+				},		
 				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(year, month, day)
-				},
+					start: new Date(year, month, day-6),
+					color: 'yellow',
+					textColor: 'black',
+					allDay: true
+				},						
 				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(year, month, day+7)
-				},
-				{
-					title: 'Conference',
-					start: new Date(year, month, day+3),
-					end: new Date(year, month, day+6)
-				},
-				{
-					title: 'Meeting',
-					start: new Date(year, month, day+5)
-				},
-				{
-					title: 'Lunch',
-					start: new Date(year, month, day+7)
-				},
-				{
-					title: 'Meeting',
-					start: new Date(year, month, day+10)
-				},
-				{
-					title: 'Happy Hour',
-					start: new Date(year, month, day+10)
-				},
-				{
-					title: 'Dinner',
-					start: new Date(year, month, day+13)
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(year, month, day+15)
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: new Date(year, month, day+18)
+					start: new Date(year, month, day-8),
+					color: 'blue',
+					textColor: 'black',
+					allDay: true
 				}
-			]
+			],
+			eventColor: '#378006'
 		});
     
 });

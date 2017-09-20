@@ -5,3 +5,22 @@ td.details-control {
 tr.details td.details-control {
     background: url('../images/details_close.png') no-repeat center center;
 }
+#calendar .fc-day-number {
+    width: 15px;
+    height: 16px;
+    text-align: right;
+}
+
+#calendar .fc-day-number:hover {
+    cursor: pointer;
+}
+
+
+#calendar .my-cell-overlay-day-corner {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 19px;
+    height: 16px;
+    cursor: pointer;
+}

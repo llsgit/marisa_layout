@@ -22,7 +22,9 @@
         <link href="assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
         <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>        
-        <!-- Theme Styles -->
+        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/> 
+        <link href="assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
+                <!-- Theme Styles -->
         <link href="assets/css/modern.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
@@ -103,12 +105,29 @@
                                             </thead>
                                         </table>        
                                         <br>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Data de Coleta</label>
-                                            <div class="col-sm-2">
-                                                <select class="select-data-remessa js-states form-control" tabindex="-1" style="display: none; width: 100%"></select>
-                                            </div>                                                                   
-                                        </div>                                                                                
+                                        <div class="row">      
+                                            <div class="col-md-5">
+                                                <div class="panel panel-white">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Data de Coleta</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="events">
+                                                            <div class="calendar-event" style="background: #ffff00;color: #000000;"><p>Data já agendada para entrega de materiais de revenda</p></i></a></div>
+                                                            <div class="calendar-event" style="background: #0000ff; color: #ffffff;"><p>Data já agendada para coleta de cabides</p></i></a></div>
+                                                            <div class="calendar-event" style="background: #009900; color: #ffffff;"><p id="agendamento">Data agendada para coleta de cabides:</p></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                           
+                                            <div class="col-md-6">
+                                                <div class="panel panel-white">
+                                                    <div class="panel-body">
+                                                        <div id="calendar"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Row -->                                                                                                                   
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Endereço de Coleta</label>
                                             <div class="col-sm-2">
@@ -127,6 +146,7 @@
                                         <button type="submit" class="btn btn-primary">Confirmar</button>
                                     </form>                                          
                                 </div>
+                          
                             </div>                            
                         </div>
                     </div><!-- Row -->
@@ -150,6 +170,9 @@
         <script src="assets/plugins/datatables/js/jquery.datatables.min.js"></script>
         <script src="assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
         <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
+        <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+        <script src="assets/plugins/fullcalendar/lang-all.js"></script>        
         <script src="assets/js/modern.min.js"></script>
         <script src="assets/plugins/select2/js/select2.min.js"></script>   
         <script src="assets/js/pages/pedidos_resultado.js"></script>

@@ -35,12 +35,16 @@ $(document).ready(function() {
         rules: {
             dt_remessa_ini: {
                 required: function(element) {
-                  return eval(document.form1.pedido.value=="");
+                  var flg = false;
+                  if (document.form1.pedido.value=="") { flg = true;}
+                  if (document.form1.dt_coleta_ini.value=="") { flg = true;}
+                  if (document.form1.dt_coleta_fin.value=="") { flg = true;}
+                  return flg;
                 }
             },
             dt_remessa_fim: {
                 required: function(element) {
-                  return eval(document.form1.pedido.value=="");
+                  return eval(document.form1.pedido.value=="" || document.form1.dt_coleta_ini.value=="");
                 }
             },
             dt_coleta_ini: {

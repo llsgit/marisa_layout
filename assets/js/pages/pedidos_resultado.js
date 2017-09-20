@@ -144,7 +144,7 @@ $(document).ready(function() {
         var pedidos = '';
         var item = '';
         var materiais = [];
-        var flg = true;
+        var flg = true;        
         table.$('tr').each(function(){
             var row = table.row( this );
             var d = row.data();
@@ -157,14 +157,16 @@ $(document).ready(function() {
                         materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
                     }
                     else{
+                        var flg_material = true;
                         for (i = 0; i < materiais.length; i++) {
-                            if (materiais[i].Material == parseInt(d.Itens.Material_Mav)) {
+                            if (materiais[i].Material == d.Itens.Material_Mav) {
                                 materiais[i].Quantidade = materiais[i].Quantidade + parseInt(d.Itens.Quantidade);
-                            }
-                            else{
-                                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                               
-                            }    
+                                flg_material = false;
+                            } 
                         }   
+                        if (flg_material) {
+                            materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                                                              
+                        }
                     }                             
                 }            
             }
@@ -178,14 +180,16 @@ $(document).ready(function() {
                             materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
                         }
                         else{
+                            var flg_material = true;
                             for (j = 0; j < materiais.length; j++) {
-                                if (materiais[j].Material == parseInt(d.Itens[i].Material_Mav)) {
-                                    materiais[j].Quantidade = materiais[j].Quantidade + d.Itens[i].Quantidade;
-                                }
-                                else{
-                                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
-                                }    
-                            }                             
+                                if (materiais[j].Material == d.Itens[i].Material_Mav) {
+                                    materiais[j].Quantidade = materiais[j].Quantidade + parseInt(d.Itens[i].Quantidade);
+                                    flg_material = false;
+                                }                                                                      
+                            }  
+                            if (flg_material) {
+                                materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
+                            }                           
                         }
                     }
                 }
@@ -197,7 +201,6 @@ $(document).ready(function() {
                 pedidos = pedidos + d.Pedido;
             }            
         });
-        alert(materiais.length);
         for (i = 0; i < materiais.length; i++) {
             table_meteriais.row.add( [
                     materiais[i].Material,
@@ -210,6 +213,63 @@ $(document).ready(function() {
         $(".formulario").show();
         $(".tabela").hide();
         $('#titulo_pedido').text("Confirmação - Pedidos: "+pedidos);        
+
+
+
+
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    
+    $('#calendar').fullCalendar({       
+            header: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            lang: 'pt',
+
+            dayClick: function(date1, jsEvent, view) {
+                var newEvent = new Object();
+                newEvent.id= '999';
+                newEvent.start= date1;
+                newEvent.color= 'green';
+                newEvent.textColor= 'black';
+                newEvent.allDay = true;
+                $('#calendar').fullCalendar('removeEvents','999');
+                $('#calendar').fullCalendar('renderEvent', newEvent, true);
+                $('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+date1.month()+"/"+date1.year());    
+            },    
+            events: [
+                {
+                    start: new Date(year, month, day-8),
+                    color: 'yellow',
+                    textColor: 'black',
+                    allDay: true
+                },
+                {
+                    start: new Date(year, month, day-7),
+                    color: 'yellow',
+                    textColor: 'black',
+                    allDay: true
+                },      
+                {
+                    start: new Date(year, month, day-6),
+                    color: 'yellow',
+                    textColor: 'black',
+                    allDay: true
+                },                      
+                {
+                    start: new Date(year, month, day-8),
+                    color: 'blue',
+                    textColor: 'black',
+                    allDay: true
+                }
+            ],
+            eventColor: '#378006'
+        });
+        
         /*$(form).append(
            $('<input>').attr('type', 'hidden')
               .attr('name', 'pedido')
@@ -217,6 +277,10 @@ $(document).ready(function() {
         );        
         //form.submit(); */
     });
+
+
+
+
 
 });
 
