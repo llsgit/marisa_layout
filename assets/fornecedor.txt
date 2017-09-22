@@ -1,0 +1,9 @@
+{
+"data":[
+["daa8cc1f-b767-448e-b891-38c765e5ecfe","Luciano Leite da Silva","leite.luciano@gmail.com","BR12908765","2017-08-30","Fornecedor"],
+["daa8cc1f-b767-448e-b891-38c765e5ecfe","Lucas Arantes do Nascimento","lucas@marisa.com","BR987608765","2017-08-30","Administrador"],
+["e6a5cf44-0083-4487-b05e-409cbe257c3e","Carlos Antonio Oliveira","carlos.oliveira@hotmail.com","BR6721345","2017-08-30","Fornecedor"],
+["c4e8072b-cbe0-48b4-9295-a78e06948f5a","Luiz Oliveira dos Santos","luiz.santos@hotmail.com","BR12902678","2017-09-01","Fornecedor"],
+["c4e8072b-cbe0-48b4-9295-a78e06948f5a","Ricardo Terra","ricardo.terra@hotmail.com","BR12902678","2017-09-01","Administrador Logistica"]
+]
+}
