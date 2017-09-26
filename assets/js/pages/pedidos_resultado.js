@@ -51,7 +51,7 @@ $(document).ready(function() {
                 targets:0,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
-                        data = '<input type="checkbox" id="' + row.Pedido + '" name="id[]" value="' + row.Pedido + '" '+row.Pedido_Checked+'>';
+                        data = '<input class="checkbox_pedido" type="checkbox" id="' + row.Pedido + '" name="id[]" value="' + row.Pedido + '" '+row.Pedido_Checked+'>';
                     }
 
                     return data;
@@ -82,9 +82,11 @@ $(document).ready(function() {
         var status = '';
         if (this.checked) {
             status = 'checked';
+            $("input[type='checkbox']").prop('checked', true);
         }
         else{
             status = '';   
+            $("input[type='checkbox']").prop('checked', false);
         }        
         table.$('tr').each(function(){
             var row = table.row( this );
@@ -97,6 +99,9 @@ $(document).ready(function() {
                     d.Itens[i].Item_Checked = status;
                 }
             }
+            if ( row.child.isShown() ) {
+                row.child( format(row.data()) ).show();
+            }                  
         });
     });
 
@@ -162,8 +167,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.btn-submit', function(e)
-    {
+    $(document).on('click', '.btn-submit', function(e){
         var form = $(this).parents('form:first');
         var pedidos = '';
         var item = '';
@@ -233,14 +237,50 @@ $(document).ready(function() {
                     ''
                 ] ).draw( false ); 
         }
+        buildCalendar();
         //$(".formulario").attr('style', 'display: block !important');
         $(".formulario").show();
+        $(".agendamento").show();        
+        $(".agendamento_edit").hide();        
         $(".tabela").hide();
         $('#titulo_pedido').text("Confirmação - Pedidos: "+pedidos);        
 
+        /*$(form).append(
+           $('<input>').attr('type', 'hidden')
+              .attr('name', 'pedido')
+              .val(pedidos)
+        );        
+        //form.submit(); */           
+    }); 
+});
 
+function format ( d ) {
+    var table = '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%;padding-left:100px;">'+
+                 '<thead><tr><th style="width:15px">#</th><th style="width:20px">Item</th><th style="width:130px">Material-lote</th><th style="width:130px">Material MAV</th><th style="width:35px">Qtd. Pedido</th><th style="width:35px">Unidade</th><th style="width:35px">Status</th><th style="width:40px">Nr. Agendamento</th><th style="width:40px">Solicitante</th></tr></thead>';
+    if (d.Itens.length == null) {
+        table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Status_Item+'</td><td>'+d.Itens.Agendamento+'</td><td>'+d.Itens.Solicitante+'</td></tr>';
+    }
+    else{
+        for (var i = 0; i < d.Itens.length; i++) {
+            table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[i].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens[i].Agendamento+');" title="Editar/Cancelar">'+d.Itens[i].Agendamento+'</a></td><td>'+d.Itens[i].Solicitante+'</td></tr>';
+        }
 
+    }
+    table = table + '</table>';
+    return table;
+}
 
+function editPedido( pedido){
+    alert(pedido);
+    $(".formulario").show();
+    $(".agendamento_edit").show();
+    $(".agendamento").hide();
+    $(".tabela").hide();
+    $('#titulo_agendamento').text("Agendamento: "+pedido);    
+    buildCalendar();
+}
+
+function buildCalendar(){
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
@@ -293,28 +333,4 @@ $(document).ready(function() {
             ],
             eventColor: '#378006'
         });
-        
-        /*$(form).append(
-           $('<input>').attr('type', 'hidden')
-              .attr('name', 'pedido')
-              .val(pedidos)
-        );        
-        //form.submit(); */
-    });
-});
-
-function format ( d ) {
-    var table = '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%;padding-left:100px;">'+
-                 '<thead><tr><th>#</th><th>Item</th><th>Material-lote</th><th>Material MAV</th><th>Quantidade Pedido</th><th>Unidade</th><th>Quantidade Fornecedor</th><th>Status</th></tr></thead>';
-    if (d.Itens.length == null) {
-        table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Quantidade_Fornecedor+'</td><td>'+d.Itens.Status_Item+'</td></tr>';
-    }
-    else{
-        for (var i = 0; i < d.Itens.length; i++) {
-            table = table + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[i].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Quantidade_Fornecedor+'</td><td>'+d.Itens[i].Status_Item+'</td></tr>';
-        }
-
-    }
-    table = table + '</table>';
-    return table;
 }
