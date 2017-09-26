@@ -77,6 +77,30 @@ $(document).ready(function() {
     });
     
     // Add event listener for opening and closing details
+
+    $('#select_all').change(function(){
+        var status = '';
+        if (this.checked) {
+            status = 'checked';
+        }
+        else{
+            status = '';   
+        }        
+        table.$('tr').each(function(){
+            var row = table.row( this );
+            var d = row_1.data();
+            if (d.Itens.length == null) {
+                d.Itens.Item_Checked = status;                            
+            }
+            else{
+                for (var i = 0; i < d.Itens.length; i++) {
+                    d_1.Itens[i].Item_Checked = status;
+                }
+            }
+        });
+    });
+
+
     $('#example tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
