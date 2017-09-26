@@ -8,7 +8,7 @@
         <meta name="keywords" content="Marisa,Fornecedores" />
         <meta name="author" content="Luciano Leite da Silva" />        
         <!-- Styles -->
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
         <link href="assets/plugins/pace-master/themes/pink/pace-theme-flash.css" rel="stylesheet"/>
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
@@ -21,8 +21,7 @@
         <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
         <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>        
-        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/> 
+        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>            
         <link href="assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
                 <!-- Theme Styles -->
         <link href="assets/css/modern.css" rel="stylesheet" type="text/css"/>
@@ -147,10 +146,26 @@
                                             </div>                                          
                                         </div>                                        
                                         <button type="submit" class="btn btn-primary btn-confirmar">Confirmar</button>
-                                        <button type="submit" class="btn btn-primary btn-excluir" style="display:none">Excluir</button>
+                                        <button type="button" class="btn btn-primary btn-excluir" data-toggle="modal" data-target=".bs-example-modal-sm" style="display:none">Excluir</button>
+											<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="mySmallModalLabel">Excluir Agendamento</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Confirma excluir o Agendamento de retirada de Cabides?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                            <button type="button" class="btn btn-success">Confirmar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                        
                                     </form>                                          
-                                </div>
-                          
+                                </div>                          	
                             </div>                            
                         </div>
                     </div><!-- Row -->

@@ -1,5 +1,6 @@
 var detailRows = [];
 var table;
+var table_meteriais;
 $(document).ready(function() {
     //$(".formulario").hide();
     //$(".tabela").show();
@@ -10,7 +11,7 @@ $(document).ready(function() {
         data: data
     });    
 
-    var table_meteriais = $('#materiais').DataTable({
+    table_meteriais = $('#materiais').DataTable({
         "bPaginate": false,
         "paging":   false,
         "ordering": false,
