@@ -260,7 +260,7 @@ function format ( d ) {
     var table_return = '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%;padding-left:100px;">'+
                  '<thead><tr><th style="width:15px">#</th><th style="width:20px">Item</th><th style="width:130px">Material-lote</th><th style="width:130px">Material MAV</th><th style="width:35px">Qtd. Pedido</th><th style="width:35px">Unidade</th><th style="width:35px">Status</th><th style="width:40px">Nr. Agendamento</th><th style="width:40px">Solicitante</th></tr></thead>';
     if (d.Itens.length == null) {
-        table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Status_Item+'</td><td>'+d.Itens.Agendamento+'</td><td>'+d.Itens.Solicitante+'</td></tr>';
+        table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens.Agendamento+');" title="Editar/Cancelar">'+d.Itens.Agendamento+'</a></td><td>'+d.Itens.Solicitante+'</td></tr>';
     }
     else{
         for (var i = 0; i < d.Itens.length; i++) {
