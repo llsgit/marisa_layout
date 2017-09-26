@@ -237,7 +237,7 @@ $(document).ready(function() {
                     ''
                 ] ).draw( false ); 
         }
-        buildCalendar();
+
         //$(".formulario").attr('style', 'display: block !important');
         $(".formulario").show();
         $(".agendamento").show();        
@@ -245,6 +245,7 @@ $(document).ready(function() {
         $(".tabela").hide();
         $('#titulo_pedido').text("Confirmação - Pedidos: "+pedidos);        
 
+        buildCalendar();
         /*$(form).append(
            $('<input>').attr('type', 'hidden')
               .attr('name', 'pedido')
@@ -271,7 +272,61 @@ function format ( d ) {
 }
 
 function editPedido( pedido){
-    alert(pedido);
+    var item = '';
+    var materiais = [];
+    var flg = true;    
+    table.$('tr').each(function(){
+        var row = table.row( this );
+        var d = row.data();
+        if (d.Itens.length == null) {
+            if (flg) {
+                flg = false;
+                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
+            }
+            else{
+                var flg_material = true;
+                for (i = 0; i < materiais.length; i++) {
+                    if (materiais[i].Material == d.Itens.Material_Mav) {
+                        materiais[i].Quantidade = materiais[i].Quantidade + parseInt(d.Itens.Quantidade);
+                        flg_material = false;
+                    } 
+                }   
+                if (flg_material) {
+                    materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                                                              
+                }
+            }                                  
+        }
+        else{
+            for (var i = 0; i < d.Itens.length; i++) {        
+                item = item + d.Pedido +'_'+d.Itens[i].Item;   
+                if (flg) {
+                    flg = false;
+                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
+                }
+                else{
+                    var flg_material = true;
+                    for (j = 0; j < materiais.length; j++) {
+                        if (materiais[j].Material == d.Itens[i].Material_Mav) {
+                            materiais[j].Quantidade = materiais[j].Quantidade + parseInt(d.Itens[i].Quantidade);
+                            flg_material = false;
+                        }                                                                      
+                    }  
+                    if (flg_material) {
+                        materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
+                    }                           
+                }
+            }
+        }
+    });
+    for (i = 0; i < materiais.length; i++) {
+        table_meteriais.row.add( [
+                materiais[i].Material,
+                materiais[i].Quantidade,
+                materiais[i].Unidade,
+                ''
+            ] ).draw( false ); 
+    }
+
     $(".formulario").show();
     $(".agendamento_edit").show();
     $(".agendamento").hide();
@@ -307,25 +362,25 @@ function buildCalendar(){
             },    
             events: [
                 {
-                    start: new Date(year, month, day-8),
+                    start: new Date(year, month, day+1),
                     color: 'yellow',
                     textColor: 'black',
                     allDay: true
                 },
                 {
-                    start: new Date(year, month, day-7),
+                    start: new Date(year, month, day+3),
                     color: 'yellow',
                     textColor: 'black',
                     allDay: true
                 },      
                 {
-                    start: new Date(year, month, day-6),
+                    start: new Date(year, month, day+7),
                     color: 'yellow',
                     textColor: 'black',
                     allDay: true
                 },                      
                 {
-                    start: new Date(year, month, day-8),
+                    start: new Date(year, month, day+8),
                     color: 'blue',
                     textColor: 'black',
                     allDay: true
