@@ -15,7 +15,7 @@
         "Agendamento": "680000001/0010",
         "Solicitante": "José Santos",
         "Sobra": "",
-        "Status_Item": "Pendente",
+        "Status_Item": "Concluído",
         "Item_Checked": ""
       },
       {
@@ -27,7 +27,7 @@
         "Agendamento": "680000001/0020",
         "Solicitante": "José Santos",
         "Sobra": "",
-        "Status_Item": "Pendente",
+        "Status_Item": "Concluído",
         "Item_Checked": ""
       },
       {
