@@ -29,10 +29,19 @@ $(document).ready(function() {
             pedido = pedido + campos[i].value;
          }
          document.form1.pedido.value = pedido;
+        var flg = false;
+        if (document.form1.pedido.value=="" & 
+          (document.form1.dt_coleta_ini.value=="" & 
+            document.form1.dt_coleta_fim.value=="" &
+            document.form1.dt_remessa_ini.value=="" &
+            document.form1.dt_remessa_fim.value=="" )){ 
+          $("#form1 div.error").show();
+          return false;          
+        }         
     });;
-
+    /*
     var $validator = $("#form1").validate({
-
+        errorLabelContainer: ,
         rules: {
             dt_remessa_ini: {
                 required: function(element) {
@@ -79,21 +88,22 @@ $(document).ready(function() {
                 }
             }                                                
         },
-          messages: {
-            dt_remessa_ini: {
-              required: "Informar a Data inicial"
-            },
-            dt_remessa_fim: {
-              required: "Informar a Data final"
-            },     
-            dt_coleta_ini: {
-              required: "Informar a Data inicial"
-            },
-            dt_coleta_fim: {
-              required: "Informar a Data final"
-            }                        
-          }
+        messages: {
+          dt_remessa_ini: {
+            required: "Informar a Data inicial"
+          },
+          dt_remessa_fim: {
+            required: "Informar a Data final"
+          },     
+          dt_coleta_ini: {
+            required: "Informar a Data inicial"
+          },
+          dt_coleta_fim: {
+            required: "Informar a Data final"
+          }                        
+        }
     });
+    */
     $('.date-picker').datepicker({
         orientation: "top auto",
         autoclose: true

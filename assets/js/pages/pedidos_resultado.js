@@ -1,7 +1,7 @@
 var detailRows = [];
 $(document).ready(function() {
-    $(".formulario").hide();
-    $(".tabela").show();
+    //$(".formulario").hide();
+    //$(".tabela").show();
     // Datatables
     var data = [{ id: 0, text: '22/09/2017' }, { id: 1, text: '23/09/2017' }, { id: 2, text: '24/09/2017' }, { id: 3, text: '25/09/2017' }, { id: 4, text: '28/09/2017' }];
  
