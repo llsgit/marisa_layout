@@ -88,13 +88,13 @@ $(document).ready(function() {
         }        
         table.$('tr').each(function(){
             var row = table.row( this );
-            var d = row_1.data();
+            var d = row.data();
             if (d.Itens.length == null) {
                 d.Itens.Item_Checked = status;                            
             }
             else{
                 for (var i = 0; i < d.Itens.length; i++) {
-                    d_1.Itens[i].Item_Checked = status;
+                    d.Itens[i].Item_Checked = status;
                 }
             }
         });
@@ -301,11 +301,6 @@ $(document).ready(function() {
         );        
         //form.submit(); */
     });
-
-
-
-
-
 });
 
 function format ( d ) {
