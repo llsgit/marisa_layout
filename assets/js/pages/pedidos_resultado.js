@@ -18,11 +18,12 @@ $(document).ready(function() {
         "info":     false,
         "searching":   false,
         "columnDefs": [
+         { width: 250, targets: 0 },
             {
                 "render": function ( data, type, row ) {
                     return "<input type='text' size='8'>";
                 },
-                "targets": 3
+                "targets": 4
             }
         ]   
     });
@@ -183,7 +184,7 @@ $(document).ready(function() {
                     d.Pedido_Checked = 'checked';
                     if (flg) {
                         flg = false;
-                        materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
+                        materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade, 'Fornecedor': d.Itens.Quantidade_Fornecedor });
                     }
                     else{
                         var flg_material = true;
@@ -194,7 +195,7 @@ $(document).ready(function() {
                             } 
                         }   
                         if (flg_material) {
-                            materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                                                              
+                            materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade, 'Fornecedor': d.Itens.Quantidade_Fornecedor });
                         }
                     }                             
                 }            
@@ -206,7 +207,7 @@ $(document).ready(function() {
                         d.Pedido_Checked = 'checked';
                         if (flg) {
                             flg = false;
-                            materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
+                            materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade, 'Fornecedor': d.Itens[i].Quantidade_Fornecedor });
                         }
                         else{
                             var flg_material = true;
@@ -217,7 +218,7 @@ $(document).ready(function() {
                                 }                                                                      
                             }  
                             if (flg_material) {
-                                materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
+                                materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade, 'Fornecedor': d.Itens[i].Quantidade_Fornecedor });
                             }                           
                         }
                     }
@@ -234,6 +235,7 @@ $(document).ready(function() {
             table_meteriais.row.add( [
                     materiais[i].Material,
                     materiais[i].Quantidade,
+                    materiais[i].Fornecedor,
                     materiais[i].Unidade,
                     ''
                 ] ).draw( false ); 
@@ -260,11 +262,11 @@ function format ( d ) {
     var table_return = '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%;padding-left:100px;">'+
                  '<thead><tr><th style="width:15px">#</th><th style="width:20px">Item</th><th style="width:130px">Material-lote</th><th style="width:130px">Material MAV</th><th style="width:35px">Qtd. Pedido</th><th style="width:35px">Unidade</th><th style="width:35px">Status</th><th style="width:40px">Nr. Agendamento</th><th style="width:40px">Solicitante</th></tr></thead>';
     if (d.Itens.length == null) {
-        table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens.Agendamento+');" title="Editar/Cancelar">'+d.Itens.Agendamento+'</a></td><td>'+d.Itens.Solicitante+'</td></tr>';
+        table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens.Item+'" '+d.Itens.Item_Checked+' value="'+d.Pedido+'_'+d.Itens.Item+'"></td><td>'+d.Itens.Item+'</td><td>'+d.Itens.Material_Lote+'</td><td>'+d.Itens.Material_Mav+'</td><td>'+d.Itens.Quantidade+'</td><td>'+d.Itens.Unidade+'</td><td>'+d.Itens.Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens.Agendamento.split("/")[0]+');" title="Editar/Cancelar">'+d.Itens.Agendamento+'</a></td><td>'+d.Itens.Solicitante+'</td></tr>';
     }
     else{
         for (var i = 0; i < d.Itens.length; i++) {
-            table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[i].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens[i].Agendamento+');" title="Editar/Cancelar">'+d.Itens[i].Agendamento+'</a></td><td>'+d.Itens[i].Solicitante+'</td></tr>';
+            table_return = table_return + '<tr><td><input type="checkbox" id="'+d.Pedido+'_'+d.Itens[i].Item+'" '+d.Itens[i].Item_Checked+' value="'+d.Pedido+'_'+d.Itens[i].Item+'"></td><td>'+d.Itens[i].Item+'</td><td>'+d.Itens[i].Material_Lote+'</td><td>'+d.Itens[i].Material_Mav+'</td><td>'+d.Itens[i].Quantidade+'</td><td>'+d.Itens[i].Unidade+'</td><td>'+d.Itens[i].Status_Item+'</td><td><a href="javascript:editPedido('+d.Itens[i].Agendamento.split("/")[0]+');" title="Editar/Cancelar">'+d.Itens[i].Agendamento+'</a></td><td>'+d.Itens[i].Solicitante+'</td></tr>';
         }
 
     }
@@ -285,7 +287,7 @@ function editPedido(pedido){
         if (d.Itens.length == null) {
             if (flg) {
                 flg = false;
-                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });    
+                materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade, 'Fornecedor': d.Itens.Quantidade_Fornecedor });    
             }
             else{
                 var flg_material = true;
@@ -296,7 +298,7 @@ function editPedido(pedido){
                     } 
                 }   
                 if (flg_material) {
-                    materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade });                                                              
+                    materiais.push({ 'Material': d.Itens.Material_Mav, 'Quantidade': parseInt(d.Itens.Quantidade), 'Unidade': d.Itens.Unidade, 'Fornecedor': d.Itens.Quantidade_Fornecedor });                                                              
                 }
             }                                  
         }
@@ -305,7 +307,7 @@ function editPedido(pedido){
                 item = item + d.Pedido +'_'+d.Itens[i].Item;   
                 if (flg) {
                     flg = false;
-                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });   
+                    materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade, 'Fornecedor': d.Itens[i].Quantidade_Fornecedor });   
                 }
                 else{
                     var flg_material = true;
@@ -316,7 +318,7 @@ function editPedido(pedido){
                         }                                                                      
                     }  
                     if (flg_material) {
-                        materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade });                               
+                        materiais.push({ 'Material': d.Itens[i].Material_Mav, 'Quantidade': parseInt(d.Itens[i].Quantidade), 'Unidade': d.Itens[i].Unidade, 'Fornecedor': d.Itens[i].Quantidade_Fornecedor });                               
                     }                           
                 }
             }
@@ -326,6 +328,7 @@ function editPedido(pedido){
         table_meteriais.row.add( [
                 materiais[i].Material,
                 materiais[i].Quantidade,
+                materiais[i].Fornecedor,
                 materiais[i].Unidade,
                 ''
             ] ).draw( false ); 
