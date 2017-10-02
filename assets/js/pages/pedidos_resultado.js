@@ -273,9 +273,9 @@ function format ( d ) {
 }
 
 function editPedido(pedido){
-   " 1 - Ocultar coluna sobra;
+   /* 1 - Ocultar coluna sobra;
    " 2 - Trazer a data;
-   " 3 - ...
+   " 3 - ... */
     var item = '';
     var materiais = [];
     var flg = true;    
