@@ -334,6 +334,10 @@ function editPedido(pedido){
             ] ).draw( false ); 
     }
 
+    var column = table_meteriais.column(4);
+    column.visible(false);
+
+
     $(".formulario").show();
     $(".agendamento_edit").show();
     $(".agendamento").hide();
@@ -356,7 +360,7 @@ function buildCalendar(){
                 right: 'next'
             },
             lang: 'pt',
-
+            businessHours: true,
             dayClick: function(date1, jsEvent, view) {
                 var newEvent = new Object();
                 newEvent.id= '999';
@@ -364,6 +368,7 @@ function buildCalendar(){
                 newEvent.color= 'green';
                 newEvent.textColor= 'black';
                 newEvent.allDay = true;
+                newEvent.rendering = 'background';
                 $('#calendar').fullCalendar('removeEvents','999');
                 $('#calendar').fullCalendar('renderEvent', newEvent, true);
                 $('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+date1.month()+"/"+date1.year());    

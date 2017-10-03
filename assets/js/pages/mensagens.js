@@ -25,10 +25,4 @@ $( document ).ready(function() {
         });
     });
     
-    $('.mailbox-content table tr td').not(":first-child").on('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-
-        window.location = "message-view.html";
-    });
 });
