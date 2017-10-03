@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Marisa | Pedidos </title>     
+        <title>Marisa | Pesquisa de Pedidos </title>     
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Portal de Fornecedores" />
@@ -12,19 +12,17 @@
         <link href="assets/plugins/pace-master/themes/pink/pace-theme-flash.css" rel="stylesheet"/>
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
+        <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/> 
+        <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>  
         <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
+        <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/> 
         <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
+        <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/> 
+        <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/> 
         <link href="assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
         <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>        
-        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/> 
-        <link href="assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-                <!-- Theme Styles -->
+        
+        <!-- Theme Styles -->
         <link href="assets/css/modern.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
@@ -47,8 +45,8 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="pedidos_pesquisa.html"><span class="menu-icon icon-basket-loaded"></span><p>Pedidos</p></a></li>
                                 <li><a href="usuarios.html"><span class="menu-icon icon-user"></span><p>Usuários</p></a></li>
-                                <li><a href="message-view.html"><span class="menu-icon icon-envelope-open"></span><p>Mensagens</p></a></li>
-                                <li><a href="login.html"><span class="menu-icon icon-logout"></span><p>Sair</p></a></li>
+                                <li><a href="mensagens.html"><span class="menu-icon icon-envelope-open"></span><p>Mensagens</p></a></li>
+                                <li><a href="#"><span class="menu-icon icon-logout"></span><p>Sair</p></a></li>
                             </ul><!-- Nav -->
                         </div><!-- Top Menu -->
                     </div>
@@ -68,13 +66,54 @@
                                     <table id="table_data" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
                                                 <th>Nome</th>
                                                 <th>E-mail</th>
                                                 <th>Fornecedor</th>
                                                 <th>Último Acesso</th>
                                                 <th>Perfil</th>                                                
                                             </tr>
+                                            <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Jose Antonio Coelho</a></td>
+                                                <td>antonio.coelho@hotmail.com</td>
+                                                <td>BR12902678</td>
+                                                <td>2017-09-01</td>
+                                                <td>Administrador CD</td>
+                                            </tr>         
+                                            <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Fabiano Neves da Costa</a></td>
+                                                <td>fabiano.costa@hotmail.com</td>
+                                                <td>BR12902678</td>
+                                                <td>2017-09-01</td>
+                                                <td>Administrador CD</td>
+                                            </tr>                                               
+                                          <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Luiz Oliveira dos Santos</a></td>
+                                                <td>luiz.santos@hotmail.com</td>
+                                                <td>BR12902678</td>
+                                                <td>2017-09-01</td>
+                                                <td>Fornecedor</td>
+                                            </tr>  
+                                          <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Carlos Oliveira Souza</a></td>
+                                                <td>carlos.souza@hotmail.com</td>
+                                                <td>BR12902687</td>
+                                                <td>2017-09-01</td>
+                                                <td>Fornecedor</td>
+                                            </tr>  
+                                          <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Ana Maria Soares</a></td>
+                                                <td>ana.soares@hotmail.com</td>
+                                                <td>BR12902238</td>
+                                                <td>2017-09-01</td>
+                                                <td>Fornecedor</td>
+                                            </tr>  
+                                          <tr role="row" class="odd">
+                                                <td><a href="javascript:onClickFornecedor('c4e8072b-cbe0-48b4-9295-a78e06948f5a','Luiz Oliveira dos Santos','luiz.santos@hotmail.com','BR12902678','Fornecedor')">Elaine oliveria Leite</a></td>
+                                                <td>elaine.leite@hotmail.com</td>
+                                                <td>BR12902678</td>
+                                                <td>2017-09-01</td>
+                                                <td>Administrador</td>
+                                            </tr>                                                                                                                                                                                                                     
                                         </thead>
                                        </table>  
                                     </div>
@@ -123,7 +162,6 @@
                 </div><!-- Main Wrapper -->
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
-
         <!-- Javascripts -->
         <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
         <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -132,20 +170,13 @@
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <script src="assets/plugins/switchery/switchery.min.js"></script>
+        <script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
         <script src="assets/plugins/classie/classie.js"></script>
         <script src="assets/plugins/waves/waves.min.js"></script>
         <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
-        <script src="assets/plugins/jquery-mockjax-master/jquery.mockjax.js"></script>
-        <script src="assets/plugins/moment/moment.js"></script>
-        <script src="assets/plugins/datatables/js/jquery.datatables.min.js"></script>
-        <script src="assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
+        <script src="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
         <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-        <script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
-        <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
-        <script src="assets/plugins/fullcalendar/lang-all.js"></script>        
-        <script src="assets/js/modern.min.js"></script>
-        <script src="assets/plugins/select2/js/select2.min.js"></script>   
-        <script src="assets/js/pages/fornecedor.js"></script>
-        
+        <script src="assets/js/modern.min.js"></script>      
+        <script src="assets/js/pages/usuarios.js"></script>  
     </body>
-</html>
+</html>        

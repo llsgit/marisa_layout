@@ -375,7 +375,7 @@ function buildCalendar(){
                 newEvent.rendering = 'background';
                 $('#calendar').fullCalendar('removeEvents','999');
                 $('#calendar').fullCalendar('renderEvent', newEvent, true);
-                $('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+date1.month()+"/"+date1.year());    
+                $('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+(date1.month()+1)+"/"+date1.year());    
             },    
             events: [
                 {
