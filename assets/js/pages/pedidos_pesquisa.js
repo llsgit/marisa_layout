@@ -23,15 +23,16 @@ $(document).ready(function() {
          var campos = controlForm.find('input');
          var pedido = "";
          for (var i = 0; i < campos.length; i++) {
-            if (i>0) {
+            if (i>0 & pedido!='') {
                 pedido=pedido+';';
             }
             pedido = pedido + campos[i].value;
          }
-         document.form1.pedido.value = pedido;
+        document.form1.pedido.value = pedido;
+        alert(document.form1.pedido.value);
         var flg = false;
         if (document.form1.pedido.value=="" & 
-          (document.form1.dt_coleta_ini.value=="" & 
+           (document.form1.dt_coleta_ini.value=="" & 
             document.form1.dt_coleta_fim.value=="" &
             document.form1.dt_remessa_ini.value=="" &
             document.form1.dt_remessa_fim.value=="" )){ 
