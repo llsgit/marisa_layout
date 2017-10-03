@@ -362,9 +362,10 @@ function buildCalendar(){
             lang: 'pt',
             businessHours: true,
             dayClick: function(date1, jsEvent, view) {
-                var xxx = date1.getDay();
-                alert(xxx);
-
+                if(date1.day() == 0 || date1.day()==6){
+                    alert('Esse dia não está disponivel');
+                    return false;
+                }
                 var newEvent = new Object();
                 newEvent.id= '999';
                 newEvent.start= date1;
