@@ -355,8 +355,7 @@ function buildCalendar(){
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
-    var year = date.getFullYear();
-    
+    var year = date.getFullYear();    
     $('#calendar').fullCalendar({       
             header: {
                 left: 'prev',
