@@ -29,7 +29,6 @@ $(document).ready(function() {
             pedido = pedido + campos[i].value;
          }
         document.form1.pedido.value = pedido;
-        alert(document.form1.pedido.value);
         var flg = false;
         if (document.form1.pedido.value=="" & 
            (document.form1.dt_coleta_ini.value=="" & 
