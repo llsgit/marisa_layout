@@ -84,6 +84,9 @@
                                         <input type="hidden" name="material">
 	                                    <button type="button" class="btn btn-primary btn-submit">Confirmar</button>
 	                                    <button type="button" class="btn btn-primary btn-excluir" data-toggle="modal" data-target=".bs-example-modal-sm">Excluir</button>
+	                                    <div class="alert alert-danger error" role="alert" style="display:none;margin-top: 10px;">
+                                        	Selecionar pelo menos um Pedido ou Item!
+                                        </div>      
 										<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 		                                    <div class="modal-dialog modal-sm">
 		                                        <div class="modal-content">
@@ -113,7 +116,7 @@
                                     <h3 class="panel-title" id='titulo_agendamento'></h4>
                                 </div>                                                         
                                 <div class="panel-body formulario" style="display:none">
-                                    <form class="form-horizontal" action="pedidos_resultado.html">
+                                    <form class="form-horizontal" action="pedidos_resultado.html" name="form2">
                                         <table id="materiais" class="display select" style="width: 100%; cellspacing: 10;">
                                             <thead>
                                                 <tr>
@@ -126,60 +129,51 @@
                                             </thead>
                                         </table>        
                                         <br>
-                                        <div class="row">      
-                                            <div class="col-md-5">
+                                        <div class="row">                                                                           
+                                            <div class="col-md-12 center">
                                                 <div class="panel panel-white">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">Data de Coleta</h3>
-                                                    </div>
+                                                    </div>                                                	
                                                     <div class="panel-body">
-                                                        <div class="events">
-                                                            <div class="calendar-event" style="background: #ffffff;color: #000000;"><p style="font-size: 13px;" id="agendamento">Data agendada para coleta de cabides:</p></div>
-                                                        </div>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>	
-                                                        <br>	
-                                                        <br>
-                                                        <br>	
-                                                        <br>
-                                                        <br>	
-                                                        <br>	
-                                                        <br>
-                                                        <br>	
-                                                        <h4>Legenda</h3>
-                                                        <div class="events">
-                                                           <div style="background: #ffff00;color: #000000;"><p style="font-size: 13px;">Data já agendada para entrega de materiais de revenda</p></div>
-                                                           <div style="background: #0000ff; color: #ffffff;"><p style="font-size: 13px;">Data já agendada para coleta de cabides</p></div>
-                                                        </div>
-                                                    </div>
+				                                        <div class="form-group">
+				                                            <label class="col-sm-3 control-label">Data agendada para coleta de cabides:</label>
+				                                            <div class="col-sm-2">
+				                                                <input type="text" id="agendamento_id" name="agendamento_id" class="form-control" value="" readonly>
+				                                            </div>                                          
+				                                        </div>     
+				                                        <div class="col-md-7 col-md-offset-3">                                                    	
+	                                           				<div>
+		                                                        <div id="calendar" style="align-content: center;"></div>
+		                                                    </div>
+		                                                    <h4>Legenda</h4>
+		                                                    <div class="events">
+		                                                       <div style="background: #ffff00;color: #000000;"><p style="font-size: 13px;">Data já agendada para entrega de materiais de revenda</p></div>
+		                                                       <div style="background: #0000ff; color: #ffffff;"><p style="font-size: 13px;">Data já agendada para coleta de cabides</p></div>
+		                                                       <div style="background: #27ba3a; color: #ffffff;"><p style="font-size: 13px;">Datas já agendadas para a coleta de cabides e entrega de materiais de revenda deste fornecedor</p>
+		                                                       </div>
+		                                                    </div>   
+		                                               </div>                                                                                                    
+				                                        <div class="form-group">
+				                                            <label class="col-sm-3 control-label">Endereço de Coleta</label>
+				                                            <div class="col-sm-2">
+				                                                <input type="text" id="centro" class="form-control" readonly value="CD820">
+				                                            </div>                                                 
+				                                            <div class="col-sm-4">
+				                                                <input type="text" id="entrega1" class="form-control" readonly value="Rua das Escotilhas, 320 - São Paulo - SP">
+				                                            </div>                                          
+				                                        </div>
+				                                        <div class="form-group">
+				                                            <label class="col-sm-3 control-label">Informações Adicionais</label>
+				                                            <div class="col-sm-6">
+				                                                <input type="text" id="entrega1" class="form-control" value="">
+				                                            </div>                                          
+				                                        </div>                                        
+					                                    <button type="submit" class="btn btn-primary btn-confirmar">Gravar</button>
+					                                </div>      
                                                 </div>
-                                            </div>                                                                           
-                                            <div class="col-md-6">
-                                                <div class="panel panel-white">
-                                                    <div class="panel-body">
-                                                        <div id="calendar"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- Row -->                                                                                                                   
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Endereço de Coleta</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" id="centro" class="form-control" readonly value="CD820">
-                                            </div>                                                 
-                                            <div class="col-sm-4">
-                                                <input type="text" id="entrega1" class="form-control" readonly value="Rua das Escotilhas, 320 - São Paulo - SP">
-                                            </div>                                          
+                                            </div>                                      
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Informações Adicionais</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" id="entrega1" class="form-control" value="">
-                                            </div>                                          
-                                        </div>                                        
-                                        <button type="submit" class="btn btn-primary btn-confirmar">Gravar</button>
                                     </form>                                          
                                 </div>                          	
                             </div>                            

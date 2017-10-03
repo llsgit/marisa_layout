@@ -231,6 +231,10 @@ $(document).ready(function() {
                 pedidos = pedidos + d.Pedido;
             }            
         });
+        if (pedidos=='') {
+            $("#form1 div.error").show();
+            return false;
+        }
         for (i = 0; i < materiais.length; i++) {
             table_meteriais.row.add( [
                     materiais[i].Material,
@@ -374,8 +378,8 @@ function buildCalendar(){
                 newEvent.allDay = true;
                 newEvent.rendering = 'background';
                 $('#calendar').fullCalendar('removeEvents','999');
-                $('#calendar').fullCalendar('renderEvent', newEvent, true);
-                $('#agendamento').text("Data agendada para coleta de cabides: "+date1.date()+"/"+(date1.month()+1)+"/"+date1.year());    
+                $('#calendar').fullCalendar('renderEvent', newEvent, true); 
+                $('#agendamento_id').val(date1.date()+"/"+(date1.month()+1)+"/"+date1.year());
             },    
             events: [
                 {
