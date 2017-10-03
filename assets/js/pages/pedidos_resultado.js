@@ -362,10 +362,13 @@ function buildCalendar(){
             lang: 'pt',
             businessHours: true,
             dayClick: function(date1, jsEvent, view) {
+                var xxx = date1.getDay();
+                alert(xxx);
+
                 var newEvent = new Object();
                 newEvent.id= '999';
                 newEvent.start= date1;
-                newEvent.color= 'green';
+                newEvent.color= '#378006';
                 newEvent.textColor= 'black';
                 newEvent.allDay = true;
                 newEvent.rendering = 'background';
