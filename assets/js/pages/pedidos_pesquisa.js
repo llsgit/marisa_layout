@@ -3,17 +3,22 @@ $(document).ready(function() {
     {
         e.preventDefault();
 
-        var controlForm = $('.controls form:first'),
-            currentEntry = $(this).parents('.entry:first'),
-            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+        var controlForm  = $('.controls:first'),
+            currentEntry = $('.entry:first'),
+            newForm = $(controlForm.clone()).appendTo(currentEntry);
 
-        newEntry.find('input').val('');
-        controlForm.find('.entry:not(:last) .btn-add')
+        currentEntry.find('.btn-remove')
+            .removeClass('btn-remove').addClass('btn-add')
+            .html('<span class="glyphicon glyphicon-plus"></span>');          
+
+        newForm.find('input').val('');
+
+        currentEntry.find('.controls:not(:last) .btn-add')
             .removeClass('btn-add').addClass('btn-remove')
             .html('<span class="glyphicon glyphicon-minus"></span>');
     }).on('click', '.btn-remove', function(e)
     {
-		$(this).parents('.entry:first').remove();
+		$(this).parents('.controls:first').remove();
 
 		e.preventDefault();
 		return false;

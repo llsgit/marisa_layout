@@ -57,7 +57,7 @@
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <a href="mensagens.html">
-                                                        <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                        <div class="msg-img"><div class="online on"></div></div>
                                                         <p class="msg-name">0820 - CD ITAQUAQUECETUBA SP</p>
                                                         <p class="msg-text">Entrega de cabides cancelada</p>
                                                         <p class="msg-time">09/10/2017</p>
@@ -65,7 +65,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="mensagens.html">
-                                                        <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                        <div class="msg-img"><div class="online on"></div></div>
                                                         <p class="msg-name">0811 - CD BLUMENAU</p>
                                                         <p class="msg-text">Entrega de cabides cancelada</p>
                                                         <p class="msg-time">06/10/2017</p>
@@ -107,25 +107,22 @@
                                 <div class="panel-heading clearfix">
                                     <h4 class="panel-title">Pesquisa de Pedidos</h4>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="form-group col-sm-12" id="fields">
-							            <label class="control-label col-sm-2" for="field[]">Informar Pedidos</label>
-							            <div class="controls col-sm-2"> 
-							                <form role="form" autocomplete="off" class="form-horizontal">
-							                    <div class="entry input-group">
-							                        <input class="form-control" name="fields[]" type="text" placeholder="Código do Pedido" />
-							                    	<span class="input-group-btn">
-							                            <button class="btn btn-success btn-add" type="button">
-							                                <span class="glyphicon glyphicon-plus"></span>
-							                            </button>
-							                        </span>
-							                    </div>							                    
-							                </form>
-							            </div>
-							        </div>
-							        <br>
+                                <div class="panel-body">                                    
 							        <form class="form-horizontal" action="pedidos_resultado.html" method="get" name="form1" id="form1">
-							        	<input type="hidden" name="pedido" id="pedido">                                          
+							        	<input type="hidden" name="pedido" id="pedido">                 
+									    <div class="form-group" id="fields">
+							            	<label class="col-sm-2 control-label ">Informar Pedidos</label>
+								            <div class="col-sm-3 entry"> 
+								                    <div class="input-group controls">
+								                        <input class="form-control" name="fields[]" type="text" placeholder="Código do Pedido" />
+								                    	<span class="input-group-btn">
+								                            <button class="btn btn-success btn-add" type="button">
+								                                <span class="glyphicon glyphicon-plus"></span>
+								                            </button>
+								                        </span>
+								                    </div>							                    
+								            </div>
+								        </div>   							        	                         
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Data de Remessa</label>
                                             <div class="col-sm-2">
@@ -152,20 +149,20 @@
                                         </div>    
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Centro de Distribuição</label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-4">
                                                 <select class="form-control m-b-sm" name="werks">
+                                                    <option value=""> </option>
                                                     <option value="0820">0820 - CD ITAQUAQUECETUBA SP</option>
                                                     <option value="0805">0805 - CD RECIFE</option>
                                                     <option value="0811">0811 - CD BLUMENAU</option>
                                                 </select>
                                             </div>
-                                        </div>                                        
+                                        </div>                                                                                 
                                         <p><button type="submit" class="btn btn-primary btn-submit">Pesquisar</button></p>
                                         <div class="alert alert-danger error" role="alert" style="display:none;">
                                         	Informar algum parâmetro de seleção!
-                                        </div>         
-                                        
-                                    </form>
+                                        </div>                                                 
+                                    </form>                                
                                 </div>
                             </div>
                         </div>
