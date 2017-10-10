@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Marisa | Pesquisa de Pedidos </title>     
+        <title>Marisa | Pesquisa de Usuários </title>     
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Portal de Fornecedores" />
@@ -33,25 +33,71 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="page-header-fixed page-horizontal-bar">
+    <body class="page-vertical-bar">
         <main class="page-content content-wrap">
             <div class="navbar">
                 <div class="navbar-inner container">
+                    <div class="sidebar-pusher">
+                        <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>                  
                     <div class="logo-box">
                         <a href="index.html"><img src="assets/images/marisa.png"></a>
                     </div>
                     <div class="topmenu-outer">
                         <div class="top-menu">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="pedidos_pesquisa.html"><span class="menu-icon icon-basket-loaded"></span><p>Pedidos</p></a></li>
-                                <li><a href="usuarios.html"><span class="menu-icon icon-user"></span><p>Usuários</p></a></li>
-                                <li><a href="mensagens.html"><span class="menu-icon icon-envelope-open"></span><p>Mensagens</p></a></li>
-                                <li><a href="#"><span class="menu-icon icon-logout"></span><p>Sair</p></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right">2</span></a>
+                                    <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
+                                        <li><p class="drop-title">2 novas mensagens!</p></li>
+                                        <li class="dropdown-menu-list slimscroll messages">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                        <p class="msg-name">0820 - CD ITAQUAQUECETUBA SP</p>
+                                                        <p class="msg-text">Entrega de cabides cancelada</p>
+                                                        <p class="msg-time">09/10/2017</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                        <p class="msg-name">0811 - CD BLUMENAU</p>
+                                                        <p class="msg-text">Entrega de cabides cancelada</p>
+                                                        <p class="msg-time">06/10/2017</p>
+                                                    </a>
+                                                </li>                                                
+                                            </ul>
+                                        </li>
+                                        <li class="drop-all"><a href="mensagens.html" class="text-center">Visualizar todas as mensagens</a></li>
+                                    </ul>
+                                </li>                               
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+                                        <span class="user-name">Fornecedor XXxxxxx<i class="fa fa-angle-down"></i></span>
+                                        <img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-list" role="menu">
+                                        <li role="presentation"><a href="usuarios.html"><i class="fa fa-user"></i>Trocar Fornecedor</a></li>
+                                    </ul>
+                                </li>                                                               
                             </ul><!-- Nav -->
                         </div><!-- Top Menu -->
                     </div>
                 </div>
             </div><!-- Navbar -->
+            <div class="page-sidebar sidebar vertical-bar">
+                <div class="page-sidebar-inner">
+                    <ul class="menu accordion-menu">
+                        <li><a href="pedidos_pesquisa.html"><span class="menu-icon icon-basket-loaded"></span><p>Pedidos</p></a></li>
+                        <li><a href="usuarios.html"><span class="menu-icon icon-user"></span><p>Usuários</p></a></li>
+                        <li><a href="#"><span class="menu-icon icon-logout"></span><p>Sair</p></a></li>
+                    </ul>    
+                </div><!-- Page Sidebar Inner -->
+            </div><!-- Page Sidebar -->     
             <div class="page-inner">
                 <div id="main-wrapper" class="container">
                     <div class="row">
