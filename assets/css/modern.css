@@ -1003,20 +1003,20 @@ h5 {
 }
 
 .btn-default {
-    background-color: #EA068C;
+    background-color: #f1f1f1;
     color: #333;
     border: 1px solid #e5e5e5;
 }
 
 .btn-default:focus,
 .btn-default.focus {
-    color: #333;
+    color: #EA068C;
     background-color: #f1f1f1;
     border-color: #e5e5e5;
 }
 
 .btn-default:hover {
-    color: #333;
+    color: #EA068C;
     background-color: #f1f1f1;
     border-color: #e5e5e5;
 }
@@ -5753,6 +5753,7 @@ body:not(.small-sidebar):not(.page-horizontal-bar) .menu.accordion-menu,
 
 .navbar {
     background: #EA068C;
+    min-height: 65px;
 }
 
 .navbar .logo-box {
