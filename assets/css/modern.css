@@ -2926,7 +2926,7 @@ tr.group:hover {
 }
 
 .fc-state-default {
-	background-color: #EA068C;
+	background-color: #e5e5e5;
 	background-image: none;
 	border-color: #e5e5e5;
 	color: #333;
@@ -2940,7 +2940,7 @@ tr.group:hover {
 .fc-state-active,
 .fc-state-disabled {
 	color: #333333;
-	background-color: #e6e6e6;
+	background-color: #EA068C;
 }
 
 .fc-state-hover {
