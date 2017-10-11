@@ -1,8 +1,8 @@
 $(document).ready(function() {
-	$('edit').hide();
+	$('.edit').hide();
 	// Datatables
+   /* 	"paging": false,
     var table = $('#table_data').DataTable({
-    	"paging": false,
 	    buttons: {
 	        buttons: [
 	            'new',
@@ -15,9 +15,10 @@ $(document).ready(function() {
 	            }
 	        ]
 	    }
+    }); */
+    $(document).on('click', '.btn-primary', function(e){
+		alert('ok');
+		$('.list').hide();
+		$('.edit').show();
     });
 });
-function onClickFornecedor(id, nome, email, fornecedor, perfil) {
-	$('list').hide();
-	$('edit').show();
-}

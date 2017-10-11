@@ -24,7 +24,7 @@ $(document).ready(function() {
 		return false;
 	}).on('click', '.btn-submit', function(e)
     {
-         var controlForm = $('.controls form:first');
+         var controlForm = $('.entry:first');
          var campos = controlForm.find('input');
          var pedido = "";
          for (var i = 0; i < campos.length; i++) {
