@@ -5,15 +5,20 @@ $(document).ready(function() {
         "bPaginate": false,
         "ajax": 'assets/fornecedor.txt',
         "columns": [
+            {
+                "class":          "details-control",
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ""
+            },        
             { "data": "nome" },
             { "data": "email" },
-            { "data": "Status" },
             { "data": "dt_ultimo" },
             { "data": "perfil" }                        
         ],
         columnDefs: [
             {
-                targets:0,
+                targets:1,
                 render: function ( data, type, row, meta ) {
                     if(type === 'display'){
                         data = '<a href="javascript:onClickFornecedor('+ row.nome + ');">'+ row.nome + '</a>';
