@@ -1,12 +1,10 @@
 var table;
 $(document).ready(function() {
-
     table = $('#table_data').DataTable({
         "bPaginate": false,
         "ajax": 'assets/fornecedor.txt',
         "columns": [
             {
-                "class":          "details-control",
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": ""
@@ -17,6 +15,16 @@ $(document).ready(function() {
             { "data": "perfil" }                        
         ],
         columnDefs: [
+			{
+                targets:0,
+                render: function ( data, type, row, meta ) {
+                    if(row.perfil === 'Fornecedor'){
+                        data = '<img src="assets/images/details_open.png" align="center" class="open_details">';
+                    }
+
+                    return data;
+                }
+            },               
             {
                 targets:1,
                 render: function ( data, type, row, meta ) {
@@ -26,9 +34,16 @@ $(document).ready(function() {
 
                     return data;
                 }
-            }          
+            }   
         ],
         "order": [[2, 'asc']]        
+    });
+
+    $('#table_data tbody').on('click', 'img.open_details', function () {
+        var tr = $(this).closest('tr');
+        alert(tr);
+        var row = table.row( tr );
+        alert(row.id);
     });
 
 	$('.edit').hide();

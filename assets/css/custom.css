@@ -5,6 +5,11 @@ td.details-control {
 tr.details td.details-control {
     background: url('../images/details_close.png') no-repeat center center;
 }
+
+.open_details{
+    cursor: pointer;    
+}
+
 #calendar .fc-day-number {
     width: 15px;
     height: 16px;
