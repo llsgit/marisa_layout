@@ -1,4 +1,31 @@
+var table;
 $(document).ready(function() {
+
+    table = $('#table_data').DataTable({
+        "bPaginate": false,
+        "ajax": 'assets/fornecedor.txt',
+        "columns": [
+            { "data": "nome" },
+            { "data": "email" },
+            { "data": "Status" },
+            { "data": "dt_ultimo" },
+            { "data": "perfil" }                        
+        ],
+        columnDefs: [
+            {
+                targets:0,
+                render: function ( data, type, row, meta ) {
+                    if(type === 'display'){
+                        data = '<a href="javascript:onClickFornecedor('+ row.nome + ');">'+ row.nome + '</a>';
+                    }
+
+                    return data;
+                }
+            }          
+        ],
+        "order": [[2, 'asc']]        
+    });
+
 	$('.edit').hide();
     $(document).on('click', '.btn-add', function(e)
     {
